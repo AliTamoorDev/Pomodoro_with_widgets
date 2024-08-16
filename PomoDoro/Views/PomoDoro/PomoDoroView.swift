@@ -321,7 +321,7 @@ struct PomoDoroView: View {
             pomodoroManager.setCurrentTask(selectedTask)
             pomodoroManager.setAllTasks(allTasks)
             pomodoroManager.startPomodoroSession()
-            pomodoroManager.notifyPomodoroSessionStarted()
+//            pomodoroManager.notifyPomodoroSessionStarted()
         }
     }
     

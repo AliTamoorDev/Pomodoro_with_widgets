@@ -199,7 +199,7 @@ struct TaskProgressView: View {
                     
                     Text("\(Int(progress * 100))%")
                         .font(.caption.bold())
-                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                         .padding(.horizontal, 10)
                 }
 

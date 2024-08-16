@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct PomoDoroApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var selectedTab: DummyTab = .pomodoro
 
     var body: some Scene {

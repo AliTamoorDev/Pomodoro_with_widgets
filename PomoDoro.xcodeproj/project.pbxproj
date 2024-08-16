@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32E80D662C6F901500F755B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E80D652C6F901500F755B5 /* AppDelegate.swift */; };
 		6955AF8F2C44793A00FB3340 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6955AF8E2C44793A00FB3340 /* NewTaskView.swift */; };
 		695F271D2C52D2E60064B8A4 /* PomoDoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695F271C2C52D2E60064B8A4 /* PomoDoroTests.swift */; };
 		695F27232C52D2ED0064B8A4 /* PomodoroManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695F27142C52D06D0064B8A4 /* PomodoroManagerTests.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		32E80D652C6F901500F755B5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6955AF8E2C44793A00FB3340 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 		695F27142C52D06D0064B8A4 /* PomodoroManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroManagerTests.swift; sourceTree = "<group>"; };
 		695F271A2C52D2E60064B8A4 /* PomoDoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomoDoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +256,7 @@
 		69DFC2752C401D74003302CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				32E80D652C6F901500F755B5 /* AppDelegate.swift */,
 				69DFC2762C401D8E003302CB /* ThemeChangeView.swift */,
 				69DFC28E2C4424D5003302CB /* Date+Extensions.swift */,
 				69DFC2902C44251E003302CB /* View+Extensions.swift */,
@@ -479,6 +482,7 @@
 				69DFC2772C401D8E003302CB /* ThemeChangeView.swift in Sources */,
 				69DFC27B2C402745003302CB /* SettingsView.swift in Sources */,
 				69DFC29F2C445B67003302CB /* TaskRowView.swift in Sources */,
+				32E80D662C6F901500F755B5 /* AppDelegate.swift in Sources */,
 				69B61D682C49A6F5006F75F1 /* TaskSelectionView.swift in Sources */,
 				69B61D6C2C4A7081006F75F1 /* PomodoroSession.swift in Sources */,
 				69DFC26A2C401D34003302CB /* ContentView.swift in Sources */,
