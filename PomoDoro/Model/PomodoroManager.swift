@@ -42,20 +42,21 @@ class PomodoroManager: ObservableObject {
     
     // For testing purpose
     
-        let workDuration: Int = Int(0.5 * 60)
-        let shortBreakDuration: Int = Int(0.25 * 60)
-        let longBreakDuration: Int = Int(0.25 * 60)
-        let cyclesBeforeLongBreak: Int = 4
+//        let workDuration: Int = Int(0.5 * 60)
+//        let shortBreakDuration: Int = Int(0.25 * 60)
+//        let longBreakDuration: Int = Int(0.25 * 60)
+//        let cyclesBeforeLongBreak: Int = 4
     
-//    let workDuration: Int = 25 * 60
-//    let shortBreakDuration: Int = 5 * 60
-//    let longBreakDuration: Int = 15 * 60
-//    let cyclesBeforeLongBreak: Int = 4
+    let workDuration: Int = 25 * 60
+    let shortBreakDuration: Int = 5 * 60
+    let longBreakDuration: Int = 15 * 60
+    let cyclesBeforeLongBreak: Int = 4
     
     private var timer: Timer?
     private var modelContext: ModelContext?
     
     init(modelContext: ModelContext) {
+        UserDefaults.standard.set(true, forKey: "notificationsEnabled")
         self.userDefaults = UserDefaults(suiteName: "group.com.empowermenthub.PomoDoro")!
         self.notificationsEnabled = UserDefaults.standard.bool(forKey: "notificationsEnabled")
         self.useFunNotifications = UserDefaults.standard.bool(forKey: "useFunNotifications")
@@ -73,6 +74,10 @@ class PomodoroManager: ObservableObject {
                 print("Notification authorization denied")
             }
         }
+    }
+    
+    func fetchNotificationStatus() {
+        notificationsEnabled = UserDefaults.standard.bool(forKey: "notificationsEnabled")
     }
     
     func scheduleNotification(title: String, body: String, timeInterval: TimeInterval = 1) {

@@ -313,6 +313,7 @@ struct PomoDoroView: View {
     }
     
     private func handlePomodoroSession() {
+        pomodoroManager.fetchNotificationStatus()
         if pomodoroManager.isActive {
             pomodoroManager.pauseSession()
         } else if pomodoroManager.currentSession != nil {
