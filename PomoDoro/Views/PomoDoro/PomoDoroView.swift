@@ -111,6 +111,15 @@ struct PomoDoroView: View {
         }
         .padding(15)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .onReceive(NotificationCenter.default.publisher(
+            for: UIApplication.didBecomeActiveNotification)) { _ in
+                pomodoroManager.movingToForeground()
+            }
+            .onReceive(NotificationCenter.default.publisher(
+                for: UIApplication.willResignActiveNotification)) { _ in
+                    pomodoroManager.movingToBackground()
+                }
+            
         .onReceive(timer) { _ in
             if isPomodoroMode {
 //                if pomodoroManager.isActive {

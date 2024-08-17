@@ -24,6 +24,8 @@ class PomodoroManager: ObservableObject {
     @Published var totalFocusTime: Int = 0
     @Published var completedTasks: Int = 0
     @Published var statistics: Statistics?
+    @Published private var notificationDate: Date = Date()
+
     // AppStorage
     @Published var notificationsEnabled: Bool {
         didSet {
@@ -36,17 +38,19 @@ class PomodoroManager: ObservableObject {
         }
     }
     
+
+
     @Query private var tasks: [PomoTask]
 
     private let userDefaults: UserDefaults
     
     // For testing purpose
     
-//        let workDuration: Int = Int(0.5 * 60)
-//        let shortBreakDuration: Int = Int(0.25 * 60)
-//        let longBreakDuration: Int = Int(0.25 * 60)
+//        let workDuration: Int = Int(0.25 * 60)
+//        let shortBreakDuration: Int = Int(0.1 * 60)
+//        let longBreakDuration: Int = Int(0.1 * 60)
 //        let cyclesBeforeLongBreak: Int = 4
-    
+
     let workDuration: Int = 25 * 60
     let shortBreakDuration: Int = 5 * 60
     let longBreakDuration: Int = 15 * 60
@@ -268,12 +272,12 @@ class PomodoroManager: ObservableObject {
         }
     }
     
-    func updateTimer() {
+    func updateTimer(timeSpent: Int = 1) {
         guard isActive, timeRemaining > 0 else { return }
         timeRemaining -= 1
         
         if currentSession?.type == .work {
-            currentTask?.timeSpent += 1
+            currentTask?.timeSpent += timeSpent
             updateStatisticsForFocusTime(duration: currentTask?.timeSpent ?? 0)
         }
         
@@ -283,6 +287,24 @@ class PomodoroManager: ObservableObject {
         WidgetCenter.shared.reloadTimelines(ofKind: "PomodoroWidget")
         objectWillChange.send()
     }
+    
+    func movingToBackground() {
+           print("Moving to the background")
+           notificationDate = Date()
+            timer?.invalidate()
+       }
+
+       func movingToForeground() {
+           print("Moving to the foreground")
+           startTimer()
+           if isActive {
+               let deltaTime: Int = Int(Date().timeIntervalSince(notificationDate))
+               var timeSpent =  deltaTime > timeRemaining ? timeRemaining : deltaTime
+               timeRemaining = (timeRemaining - deltaTime > 0 ? timeRemaining - deltaTime : 0) + 1
+              
+               updateTimer(timeSpent: timeSpent)
+           }
+       }
     
     func completeSession() {
         isActive = false
